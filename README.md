@@ -1,6 +1,6 @@
 # PINN for Laser Heating Modelling 
 
-Physics-informed neural networks (PINNs) for the **temperature field** in an **agar gel phantom** heated by a **pulsed Gaussian laser** (980 nm, Beer–Lambert absorption). The repository contains:
+Physics-informed neural networks (PINNs) for predicting the **temperature field** in an **agar gel phantom** heated by a **pulsed Gaussian laser** (980 nm, Beer–Lambert absorption). The repository contains:
 
 - a **C++ ADI finite-difference** synthetic data generator;
 - **DeepXDE** PINNs for the **forward** problem (predict \(T\)) and **inverse** problem (identify thermal conductivity \(k\));
