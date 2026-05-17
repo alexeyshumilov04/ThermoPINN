@@ -1,0 +1,56 @@
+# Inverse problem: learn k from multi-depth temperature sensors
+seed: 42
+output_dir: outputs/inverse_fnn
+
+physics:
+  rho_cp: 4.0e6
+  k_true: 0.6
+  k_init: 0.5
+  alpha_absorption: 48.2
+  A: 0.4
+  T0: 291.0
+  Lx: 0.040
+  Ly: 0.010
+  Lz: 0.005
+  r0: 0.001
+  Ep: 0.1
+  pulse_fwhm: 3.0
+  pulse_sigma: 1.274
+  t_peak: 3.822
+  pulse_period: 20.0
+  N_pulses: 1
+  T_end: 60.0
+
+network:
+  architecture: fnn
+  layer_sizes: [4, 100, 100, 100, 100, 100, 1]
+  activation: tanh
+  hard_constraint: ramp_softplus
+
+data:
+  reference_path: synthetic_data/data/out_Tt.txt
+  sensor_depths_m: [0.0, 0.001, 0.003]
+  n_anchors: 50
+
+training:
+  run_name: inverse_fnn
+  num_domain: 5000
+  num_boundary: 0
+  num_initial: 1000
+  loss_weights: [1, 1, 1, 1]
+  display_every: 500
+  wandb_log_every: 100
+  checkpoint: inverse_fnn
+  phases:
+    - optimizer: adam
+      lr: 0.001
+      iterations: 10000
+      log_k_period: 500
+    - optimizer: L-BFGS
+      iterations: 2000
+      log_k_period: 200
+
+wandb:
+  enabled: false
+  project: pinn-laser-heating
+  tags: [inverse, fnn]

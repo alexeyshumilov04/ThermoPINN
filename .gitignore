@@ -1,0 +1,68 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.venv/
+venv/
+ENV/
+env/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+*.cover
+.hypothesis/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# WandB
+wandb/
+*.wandb
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# C++
+synthetic_data/build/
+*.o
+*.obj
+*.exe
+*.out
+*.app
+
+# Project outputs
+outputs/
+*.pt
+*.pth
+my_model*
+*.csv
+!configs/*.yaml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Large generated data (keep sample in repo; regenerate locally)
+# synthetic_data/data/out_*.txt

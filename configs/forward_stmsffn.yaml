@@ -1,0 +1,49 @@
+# Spatio-temporal Fourier network (TensorFlow backend)
+seed: 42
+output_dir: outputs/forward_stmsffn
+
+physics:
+  rho_cp: 4.0e6
+  k: 0.6
+  alpha_absorption: 48.2
+  A: 0.4
+  T0: 291.0
+  Lx: 0.040
+  Ly: 0.010
+  Lz: 0.005
+  r0: 0.001
+  Ep: 0.1
+  pulse_fwhm: 3.0
+  pulse_sigma: 1.274
+  t_peak: 3.822
+  pulse_period: 20.0
+  N_pulses: 3
+  T_end: 60.0
+
+network:
+  architecture: stmsffn
+  layer_sizes: [4, 80, 80, 80, 80, 80, 1]
+  sigmas_x: [0]
+  sigmas_t: [0.16, 4]
+  hard_constraint: ramp_softplus
+
+boundary:
+  neumann: true
+
+data:
+  use_sensors: true
+  n_anchors: 50
+  sensor_depths_m: [0.001]
+  reference_path: synthetic_data/data/out_Tt.txt
+
+training:
+  num_domain: 500
+  num_boundary: 100
+  phases:
+    - optimizer: adam
+      lr: 0.001
+      iterations: 5000
+
+wandb:
+  enabled: false
+  tags: [forward, stmsffn]
