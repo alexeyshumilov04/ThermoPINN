@@ -1,4 +1,4 @@
-# PINN for Laser Heating of a Biological Phantom
+# PINN for Laser Heating Modelling 
 
 Physics-informed neural networks (PINNs) for the **temperature field** in an **agar gel phantom** heated by a **pulsed Gaussian laser** (980 nm, Beer–Lambert absorption). The repository couples:
 
@@ -12,20 +12,20 @@ Original exploratory notebooks are preserved under `archive/`.
 
 ```
 ├── synthetic_data/          # C++ ADI solver + reference outputs
-│   ├── src/                 # Refactored solver sources
-│   ├── data/                # out_Tt.txt, out_Txz.txt, …
+│   ├── src/                 # solver sources
+│   ├── data/                # synthetic data
 │   ├── scripts/             # visualize_results.py
 │   └── Makefile
 ├── pinn/                    # Python package
 │   ├── data/                # Load C++ outputs
 │   ├── physics/             # Domain, heat source, PDE
 │   ├── models/              # FNN / MsFFN / STMsFFN + hard constraints
-│   ├── problems/            # Forward & inverse formulations
+│   ├── problems/            # Forward & inverse problems
 │   ├── training/            # Trainer + WandB
 │   └── visualization/
 ├── configs/                 # YAML experiment configs
 ├── scripts/                 # CLI entry points
-├── archive/                 # Legacy notebooks (not removed)
+├── archive/                 # Legacy notebooks (not used)
 └── outputs/                 # Checkpoints and figures (gitignored)
 ```
 
@@ -79,7 +79,7 @@ python synthetic_data/scripts/visualize_results.py
 
 ## Forward problem (predict temperature)
 
-Known \(k \approx 0.6\,\mathrm{W/(m{\cdot}K)}\). PINN solves the heat equation with Neumann boundaries (and optional sensor points).
+Known k = 0.6 W/(m*K). PINN solves the heat equation with Neumann boundaries (and optional sensor points).
 
 ```bash
 python scripts/train_forward.py --config configs/forward_fnn.yaml --plot
@@ -123,9 +123,6 @@ Implemented in `pinn/models/constraints.py`:
 
 ## Citation & license
 
-Academic research project. Add your license and citation text as needed.
+Academic research project. 
 
-## Archive
 
-- `archive/notebook.ipynb` — original Colab experiments (architectures, collocation sweeps, plots).
-- `archive/pinn_reverse_problem_3.py` — exported inverse-problem script (superseded by `scripts/train_inverse.py`).
