@@ -1,4 +1,4 @@
-# PINN for Temperature Modelling 
+# PINN for Laser Heating Modelling 
 
 Physics-informed neural networks (PINNs) for the **temperature field** in an **agar gel phantom** heated by a **pulsed Gaussian laser** (980 nm, Beer–Lambert absorption). The repository contains:
 
