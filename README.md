@@ -8,7 +8,7 @@ Physics-informed neural networks (PINNs) for the **temperature field** in an **a
 
 Original exploratory notebooks are preserved under `archive/`.
 
-## Repository layout
+## Repository structure
 
 ```
 ├── synthetic_data/          # C++ ADI solver + reference outputs
@@ -94,7 +94,7 @@ python scripts/train_forward.py --config configs/forward_msffn.yaml
 
 ## Inverse problem (identify conductivity)
 
-Unknown \(k\); parametrized as `log_k` with \(k = \exp(\log k) > 0\). Training uses temperature anchors at **z = 0, 1, 3 mm** from `out_Tt.txt`.
+Unknown \(k\); parametrized as `log_k` with \(k = exp(log_k) > 0\). Training uses temperature anchors at **z = 0, 1, 3 mm** from `out_Tt.txt`.
 
 ```bash
 python scripts/train_inverse.py --config configs/inverse_fnn.yaml --plot
