@@ -25,8 +25,6 @@ Original exploratory notebooks are preserved under `archive/`.
 │   └── visualization/
 ├── configs/                 # YAML experiment configs
 ├── scripts/                 # CLI entry points
-├── archive/                 # Legacy notebooks (not used)
-└── outputs/                 # Checkpoints and figures (gitignored)
 ```
 
 ## Installation
