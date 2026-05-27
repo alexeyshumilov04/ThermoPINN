@@ -6,7 +6,6 @@ Physics-informed neural networks (PINNs) for predicting the **temperature field*
 - **DeepXDE** PINNs for the **forward** problem (predict \(T\)) and **inverse** problem (identify thermal conductivity \(k\));
 - optional **Weights & Biases** experiment logging.
 
-Original exploratory notebooks are preserved under `archive/`.
 
 ## Repository structure
 
