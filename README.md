@@ -114,8 +114,8 @@ YAML files in `configs/` control physics, network architecture, hard constraints
 
 Implemented in `pinn/models/constraints.py`:
 
-- **`ramp_softplus`** — \(T = T_0 + (1 - e^{-t/\tau})\,\mathrm{softplus}(y)\): enforces \(T \ge T_0\) and \(T(\cdot, t{=}0) = T_0\).
-- **`linear_ramp`** — \(T = T_0 + t\,y\): exact IC at \(t=0\).
+- **`ramp_softplus`** — $T = T_0 + (1 - e^{-t/\tau})\,\mathrm{softplus}(y)$: enforces $T \ge T_0$ and $T(\cdot, t{=}0) = T_0$.
+- **`linear_ramp`** — $T = T_0 + t\,y$: exact IC at $t=0$.
 - **`none`** — raw network output.
 
 ## Citation & license
