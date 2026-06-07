@@ -66,3 +66,5 @@ Thumbs.db
 
 # Large generated data (keep sample in repo; regenerate locally)
 # synthetic_data/data/out_*.txt
+
+archive/

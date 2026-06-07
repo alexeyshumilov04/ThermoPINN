@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  # Сервис для обучения модели
+  train:
+    build: .
+    command: python scripts/train_forward.py --config configs/forward_fnn.yaml
+    volumes:
+      - ./outputs:/app/outputs  # Сохраняем результаты обучения на хост-машину
+      - ./wandb:/app/wandb      # Сохраняем логи Weights & Biases
+    # Раскомментируйте, если нужен доступ к GPU
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: 1
+    #           capabilities: [gpu]
+
+  # Сервис для генерации синтетических данных
+  generate-data:
+    build: .
+    command: /bin/bash -c "cd synthetic_data/build && ./heat_diffusion_agar"
+    stdin_open: true  # Для интерактивного ввода
+    tty: true
+    volumes:
+      - ./synthetic_data/data:/app/synthetic_data/data  # Сохраняем данные на хост
